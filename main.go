@@ -15,7 +15,7 @@ import (
 
 var (
 	client       *mongo.Client
-	databaseName = "digitalthread"
+	databaseName = "kotosAuction"
 )
 
 func init() {
@@ -45,17 +45,25 @@ func main() {
 	r := mux.NewRouter()
 
 	// Auction functions
-	r.HandleFunc("/createAuction", CreateAuction).Methods("POST") // Adds a prder object to MongoDB/data_objects
-	r.HandleFunc("/getStartList", GetAuctionStartList).Methods("GET")
-	r.HandleFunc("/getStopList/{duration}", GetAuctionStopList).Methods("GET")
-	r.HandleFunc("/startAuction/{auctionId}/{startTime}", StartAuction).Methods("PUT")
-	r.HandleFunc("/stopAuction/{auctionId}/{endTime}", StopAuction).Methods("PUT")
-	r.HandleFunc("/getAwaitingWinnerList", GetAwaitingWinnerList).Methods("GET")
-	r.HandleFunc("/setAuctionWinner/{auctionId}/{bidId}", SetAuctionWinner).Methods("PUT")
+	r.HandleFunc("/createAuction", CreateAuction).Methods("POST")
+	r.HandleFunc("/getAuction/{auctionId}", GetAuction).Methods("GET")
+	r.HandleFunc("/getAuctionList", GetAuctionList).Methods("GET")
+
+	r.HandleFunc("/startAuction/{auctionId}", StartAuction).Methods("PUT")
+	r.HandleFunc("/stopAuction/{auctionId}", StopAuction).Methods("PUT")
+	r.HandleFunc("/getAuctionWinner/{auctionId}", GetAuctionWinner).Methods("GET")
 
 	// Bid functions
 	r.HandleFunc("/addBid", AddBid).Methods("POST")
+	r.HandleFunc("/getBid/{bidId}", GetBid).Methods("GET")
 	r.HandleFunc("/getBidList/{auctionId}", GetBidList).Methods("GET")
+
+	//r.HandleFunc("/getStartList", GetAuctionStartList).Methods("GET")
+	//r.HandleFunc("/getStopList/{duration}", GetAuctionStopList).Methods("GET")
+	//r.HandleFunc("/startAuction/{auctionId}/{startTime}", StartAuction).Methods("PUT")
+	//r.HandleFunc("/stopAuction/{auctionId}/{endTime}", StopAuction).Methods("PUT")
+	//r.HandleFunc("/getAwaitingWinnerList", GetAwaitingWinnerList).Methods("GET")
+	//r.HandleFunc("/setAuctionWinner/{auctionId}/{bidId}", SetAuctionWinner).Methods("PUT")
 
 	port := os.Getenv("AUCTION_PORT")
 	if port == "" {

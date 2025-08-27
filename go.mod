@@ -15,10 +15,8 @@ require (
 )
 
 require (
-	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/joho/godotenv v1.5.1
-	github.com/shopspring/decimal v1.4.0
 	go.mongodb.org/mongo-driver v1.17.3
 	golang.org/x/crypto v0.38.0 // indirect
 )
