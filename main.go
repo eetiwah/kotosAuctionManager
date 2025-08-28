@@ -58,13 +58,6 @@ func main() {
 	r.HandleFunc("/getBid/{bidId}", GetBid).Methods("GET")
 	r.HandleFunc("/getBidList/{auctionId}", GetBidList).Methods("GET")
 
-	//r.HandleFunc("/getStartList", GetAuctionStartList).Methods("GET")
-	//r.HandleFunc("/getStopList/{duration}", GetAuctionStopList).Methods("GET")
-	//r.HandleFunc("/startAuction/{auctionId}/{startTime}", StartAuction).Methods("PUT")
-	//r.HandleFunc("/stopAuction/{auctionId}/{endTime}", StopAuction).Methods("PUT")
-	//r.HandleFunc("/getAwaitingWinnerList", GetAwaitingWinnerList).Methods("GET")
-	//r.HandleFunc("/setAuctionWinner/{auctionId}/{bidId}", SetAuctionWinner).Methods("PUT")
-
 	port := os.Getenv("AUCTION_PORT")
 	if port == "" {
 		log.Println("Error: AUCTION_PORT is empty")

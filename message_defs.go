@@ -6,13 +6,12 @@ import (
 
 type AuctionObject struct {
 	Id         string    `json:"id"`         // GUID for an auction
-	OrderId    string    `json:"orderid"`    // GUID for the order
+	ProductId  string    `json:"productid"`  // GUID for the product
 	StartDate  time.Time `json:"startdate"`  // Start date of an auction
 	EndDate    time.Time `json:"enddate"`    // End date of an auction
 	WinningBid string    `json:"winningbid"` // Winning bid of an auction
 }
 
-// Response represents the JSON response structure
 type Response struct {
 	GUID    string   `json:"guid"`
 	Updated int      `json:"updated"`
