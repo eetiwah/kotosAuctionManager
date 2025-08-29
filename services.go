@@ -81,7 +81,7 @@ func GetAuction(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Set the context and timeout
-	ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(r.Context(), 10*time.Second)
 	defer cancel()
 
 	var auctionObj AuctionObject
